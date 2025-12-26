@@ -27,7 +27,7 @@ def load_model():
     """
     try:
         # Update this path to your actual model
-        model = keras.models.load_model('/content/pest_model.h5')
+        model = keras.models.load_model('pest_model.h5')
         return model
     except Exception as e:
         st.error(f"Error loading model: {str(e)}")
