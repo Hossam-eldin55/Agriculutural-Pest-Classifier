@@ -4,7 +4,6 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 import matplotlib.pyplot as plt
-import os
 
 # Page configuration
 st.set_page_config(
@@ -20,15 +19,10 @@ st.markdown("Upload an image to identify common agricultural pests")
 st.markdown("---")
 
 
-# Load Model
-
 @st.cache_resource
 def load_model():
     try:
-        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-        MODEL_PATH = os.path.join(BASE_DIR, "pest_model.h5")
-
-        model = keras.models.load_model(MODEL_PATH)
+        model = keras.models.load_model("pest_model.h5", compile=False)
         return model
 
     except Exception as e:
