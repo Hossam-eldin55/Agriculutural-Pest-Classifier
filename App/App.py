@@ -104,8 +104,8 @@ def predict(model, image):
     # Preprocess image
     processed_image = preprocess_image(image)
 
-    # Get predictions
-    predictions = model.predict(processed_image, verbose=0)
+    # For multi-input model, send the same tensor twice
+    predictions = model.predict([processed_image, processed_image], verbose=0)
 
     return predictions[0]
 
