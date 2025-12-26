@@ -4,6 +4,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 import matplotlib.pyplot as plt
+import os
 
 # Page configuration
 st.set_page_config(
@@ -18,21 +19,23 @@ st.markdown("### AI-Powered Pest Detection for Agriculture")
 st.markdown("Upload an image to identify common agricultural pests")
 st.markdown("---")
 
-# Load model
+
+# Load Model
+
 @st.cache_resource
 def load_model():
-    """
-    Load your trained model here
-
-    """
     try:
-        # Update this path to your actual model
-        model = keras.models.load_model('pest_model.h5')
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        MODEL_PATH = os.path.join(BASE_DIR, "pest_model.h5")
+
+        model = keras.models.load_model(MODEL_PATH)
         return model
+
     except Exception as e:
-        st.error(f"Error loading model: {str(e)}")
-        st.warning("⚠️ Please update the model path in the code")
+        st.error(f"❌ Error loading model: {e}")
+        st.error(f"📂 Tried path: {MODEL_PATH}")
         return None
+
 
 # Pest class names - 12 classes from Agricultural Pests Dataset
 CLASS_NAMES = [
