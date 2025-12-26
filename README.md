@@ -11,16 +11,10 @@ This project uses a trained deep learning model to classify images of agricultur
 
 The system supports:
 - Image-based pest classification
-- Running inference using a Python script
 - Experimentation and training through Jupyter Notebooks
+- Running inference using a Python script (Streamlit)
 
----
-
-## 🧠 Model Details
-- Model type: Convolutional Neural Network (CNN)
-- Framework: TensorFlow / Keras
-- Trained model file: `pest_model.h5`
-
----
-
-## 📂 Project Structure
+## 📂 Dataset
+The dataset used in this project consists of images of 12 agricultural pests.  
+It is used to train and evaluate the deep learning model for classification.
+https://www.kaggle.com/datasets/vencerlanz09/agricultural-pests-image-dataset/data
