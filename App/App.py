@@ -4,6 +4,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 import matplotlib.pyplot as plt
+import os
 
 # Page configuration
 st.set_page_config(
@@ -22,14 +23,16 @@ st.markdown("---")
 @st.cache_resource
 def load_model():
     try:
-        model = keras.models.load_model("pest_model.h5", compile=False)
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        MODEL_PATH = os.path.join(BASE_DIR, "pest_model.h5")
+
+        model = keras.models.load_model(MODEL_PATH, compile=False)
         return model
 
     except Exception as e:
         st.error(f"❌ Error loading model: {e}")
         st.error(f"📂 Tried path: {MODEL_PATH}")
         return None
-
 
 # Pest class names - 12 classes from Agricultural Pests Dataset
 CLASS_NAMES = [
